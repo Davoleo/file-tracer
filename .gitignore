@@ -1,0 +1,9 @@
+# .idea directory
+/.idea
+
+# CMAKE Build Directory
+/cmake-build-debug
+
+# External Libraries
+/libs
+
