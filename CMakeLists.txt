@@ -5,6 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Include wxWidgets lib sources (to build with the project)
 add_subdirectory(libs/wxWidgets)
-add_executable(file_tracer src/main.cpp)
+add_executable(file_tracer src/main.cpp ftlib/ftlib.c)
 
 target_link_libraries(file_tracer wx::net wx::core wx::base)
