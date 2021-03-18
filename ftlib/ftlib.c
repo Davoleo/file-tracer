@@ -73,7 +73,6 @@ void find_file(Folder *folder)
                 // Assemble the dir string
                 strcpy(folder->result[folder->result_index], directory);
                 strcat(folder->result[folder->result_index], ent->d_name);
-                printf("\nRes: %s", folder->result[folder->result_index]);
                 // Increase the dir index
                 folder->result_index++;
             }
