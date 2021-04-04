@@ -4,6 +4,6 @@
 # CMAKE Build Directory
 /cmake-build-debug
 
-# External Libraries
-/libs
+# Compiled wxWidgets Binaries and headers
+/wxWidgets
 
