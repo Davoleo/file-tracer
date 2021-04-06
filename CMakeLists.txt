@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(file_tracer)
+project(file_tracer_gui)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -24,7 +24,7 @@ endif()
 
 # --- file tracer source files ---
 set(SRC_FILES src/FileTracer.cpp src/FileTracer.h src/UI/MainWindow.cpp src/UI/MainWindow.h)
-add_executable(file_tracer ${SRC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 # --- Link against wxWidgets libraries
-target_link_libraries(file_tracer ft ${wxWidgets_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ft ${wxWidgets_LIBRARIES})

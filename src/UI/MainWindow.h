@@ -17,10 +17,20 @@ public:
     MainWindow();
 
 private:
-    void OnHello(wxCommandEvent& event) {}
-    void OnExit(wxCommandEvent& event) {}
-    void OnAbout(wxCommandEvent& event) {}
+    wxBoxSizer* mainColumn;
+    wxBoxSizer* topRow;
+
+    wxTextCtrl*  searchBox;
+
+    void OnExit(wxCommandEvent& event);
+    void OnAbout(wxCommandEvent& event);
+
+    wxDECLARE_EVENT_TABLE();
 };
 
-
 #endif //FILE_TRACER_MAINWINDOW_H
+
+wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
+                EVT_MENU(wxID_EXIT, MainWindow::OnExit)
+                EVT_MENU(wxID_ABOUT, MainWindow::OnAbout)
+wxEND_EVENT_TABLE()
