@@ -6,6 +6,7 @@
 #define FILE_TRACER_MAINWINDOW_H
 
 #include <wx/wxprec.h>
+//#include <wx/stc/stc.h>
 
 #ifndef WX_PRECOMP
 #include <wx/wx.h>

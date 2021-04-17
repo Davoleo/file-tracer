@@ -37,7 +37,7 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
     this->SetSizerAndFit(mainColumn);
 
     //--- Top Row Setup ---
-    searchBox = new wxTextCtrl(this, -1);
+    searchBox = new wxTextCtrl(this, wxID_ANY);
     //TODO : Extract from this class making it a constant to use in the whole application
     wxFont searchFont = wxNullFont;
     searchFont.SetPointSize(16);
@@ -51,6 +51,8 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
 
     //--- Add all the children sizer to the top level sizer ---
     mainColumn->Add(topRow, 0, wxEXPAND, 0);
+
+    this->SetInitialSize(wxSize(350, 400));
 
     //--- Setup the Status Bar
     this->CreateStatusBar();
