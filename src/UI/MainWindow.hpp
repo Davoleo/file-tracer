@@ -6,6 +6,7 @@
 #define FILE_TRACER_MAINWINDOW_H
 
 #include <wx/wxprec.h>
+#include <wx/dataview.h>
 //#include <wx/stc/stc.h>
 
 #ifndef WX_PRECOMP
@@ -22,6 +23,8 @@ private:
     wxBoxSizer* topRow;
 
     wxTextCtrl*  searchBox;
+
+    wxDataViewListCtrl* fileListView;
 
     //Event handlers -- they don't need to be public
     void OnExit(wxCommandEvent& event);

@@ -37,15 +37,29 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
     mainColumn = new wxBoxSizer(wxVERTICAL);
     this->SetSizerAndFit(mainColumn);
 
-    //--- Top Row Setup ---
+    //--- Top Row Setup (Search Box) ---
     searchBox = new wxTextCtrl(this, wxID_ANY);
     searchBox->SetFont(searchFont);
     searchBox->SetHint("Search Something");
     searchBox->SetWindowStyleFlag(wxTE_RICH);
     searchBox->SetWindowStyleFlag(wxTE_NOHIDESEL);
 
-    //--- Add all the children sizer to the top level sizer ---
-    mainColumn->Add(searchBox, 0, wxEXPAND, 0);
+    //--- Add the search box to the main column sizer ---
+    mainColumn->Add(searchBox, 1, wxEXPAND, 0);
+
+
+    fileListView = new wxDataViewListCtrl(this, wxID_ANY);
+    fileListView->AppendTextColumn("Test1Text");
+    fileListView->AppendToggleColumn("Test2Toggle");
+    wxVector<wxVariant> data;
+    data.push_back( wxVariant("row 1") );
+    data.push_back( wxVariant(true) );
+    fileListView->AppendItem(data);
+    mainColumn->Add(fileListView, 9, wxEXPAND, 0);
+
+//    data.push_back( wxVariant(false) );
+//    data.push_back( wxVariant("row 3") );
+//    listctrl->AppendItem( data );
 
     this->SetInitialSize(wxSize(350, 400));
 
