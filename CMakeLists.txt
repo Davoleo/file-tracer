@@ -23,7 +23,7 @@ elseif(APPLE)
 endif()
 
 # --- file tracer source files ---
-set(SRC_FILES src/FileTracer.cpp src/FileTracer.hpp src/UI/MainWindow.cpp src/UI/MainWindow.hpp)
+set(SRC_FILES src/FileTracer.cpp src/FileTracer.hpp src/UI/MainWindow.cpp src/UI/MainWindow.hpp src/Utils/constants.h)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 # --- Link against wxWidgets libraries

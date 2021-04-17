@@ -3,6 +3,7 @@
 //
 
 #include "MainWindow.hpp"
+#include "../Utils/constants.h"
 
 ///Maps events to handler functions
 wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
@@ -38,19 +39,13 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
 
     //--- Top Row Setup ---
     searchBox = new wxTextCtrl(this, wxID_ANY);
-    //TODO : Extract from this class making it a constant to use in the whole application
-    wxFont searchFont = wxNullFont;
-    searchFont.SetPointSize(16);
     searchBox->SetFont(searchFont);
     searchBox->SetHint("Search Something");
     searchBox->SetWindowStyleFlag(wxTE_RICH);
     searchBox->SetWindowStyleFlag(wxTE_NOHIDESEL);
 
-    topRow = new wxBoxSizer(wxHORIZONTAL);
-    topRow->Add(searchBox, wxSizerFlags(5).Expand().Align(wxALIGN_LEFT));
-
     //--- Add all the children sizer to the top level sizer ---
-    mainColumn->Add(topRow, 0, wxEXPAND, 0);
+    mainColumn->Add(searchBox, 0, wxEXPAND, 0);
 
     this->SetInitialSize(wxSize(350, 400));
 
