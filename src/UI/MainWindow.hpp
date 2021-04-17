@@ -22,6 +22,7 @@ private:
 
     wxTextCtrl*  searchBox;
 
+    //Event handlers -- they don't need to be public
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
 
@@ -29,8 +30,3 @@ private:
 };
 
 #endif //FILE_TRACER_MAINWINDOW_H
-
-wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
-                EVT_MENU(wxID_EXIT, MainWindow::OnExit)
-                EVT_MENU(wxID_ABOUT, MainWindow::OnAbout)
-wxEND_EVENT_TABLE()

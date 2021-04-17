@@ -2,7 +2,13 @@
 // Created by Davoleo on 05/04/2021.
 //
 
-#include "MainWindow.h"
+#include "MainWindow.hpp"
+
+///Maps events to handler functions
+wxBEGIN_EVENT_TABLE(MainWindow, wxFrame)
+                EVT_MENU(wxID_EXIT, MainWindow::OnExit)
+                EVT_MENU(wxID_ABOUT, MainWindow::OnAbout)
+wxEND_EVENT_TABLE()
 
 /// Constructs the Main Menu Bar and all its internal menus
 /// \param menuBar the menu bar that is injected with items
@@ -37,6 +43,8 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
     searchFont.SetPointSize(16);
     searchBox->SetFont(searchFont);
     searchBox->SetHint("Search Something");
+    searchBox->SetWindowStyleFlag(wxTE_RICH);
+    searchBox->SetWindowStyleFlag(wxTE_NOHIDESEL);
 
     topRow = new wxBoxSizer(wxHORIZONTAL);
     topRow->Add(searchBox, wxSizerFlags(5).Expand().Align(wxALIGN_LEFT));
@@ -52,11 +60,11 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
 
 #pragma region Menu Event Handlers
 
-void MainWindow::OnExit(wxCommandEvent &event) {
+void MainWindow::OnExit(wxCommandEvent& event) {
     Close(true);
 }
 
-void MainWindow::OnAbout(wxCommandEvent &event) {
+void MainWindow::OnAbout(wxCommandEvent& event) {
     wxMessageBox("Test");
 }
 

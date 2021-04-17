@@ -2,8 +2,8 @@
 // Created by Davoleo on 05/04/2021.
 //
 
-#include "FileTracer.h"
-#include "UI/MainWindow.h"
+#include "FileTracer.hpp"
+#include "UI/MainWindow.hpp"
 
 //This calls the main function (which then calls the onInit in the app class [this one])
 wxIMPLEMENT_APP(FileTracer);
