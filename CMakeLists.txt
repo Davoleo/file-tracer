@@ -10,20 +10,20 @@ add_subdirectory(ftlib)
 find_package(wxWidgets 3.1 COMPONENTS core base REQUIRED)
 
 # --- wxWidgets header files ---
-include(${wxWidgets_USE_FILE})
+include(${wxWidgets_USE_FILE} ftlib/src/ftlib.c)
 # include_directories(wxWidgets/include)
 
 # Extra things
 if(WIN32)
     # Include a RC file for windows
-    list(APPEND SRC_FILES ../sample.rc)
+    list(APPEND SRC_FILES file_tracer.rc)
 elseif(APPLE)
     # Add an icon for the apple .app file
     list(APPEND SRC_FILES ../../src/osx/carbon/wxmac.icns)
 endif()
 
 # --- file tracer source files ---
-set(SRC_FILES src/FileTracer.cpp src/FileTracer.hpp src/UI/MainWindow.cpp src/UI/MainWindow.hpp src/Utils/constants.h)
+set(SRC_FILES src/FileTracer.cpp src/FileTracer.hpp src/UI/MainWindow.cpp src/UI/MainWindow.hpp src/Utils/constants.h src/Models/file_info.h)
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 # --- Link against wxWidgets libraries

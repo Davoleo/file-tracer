@@ -27,7 +27,7 @@ void setupMenus(wxMenuBar* menuBar) {
 }
 
 ///Constructs the main window and all its components
-MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
+MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer", wxPoint(100, 100)) {
 
     //Setup the main menu bar
     auto* mainMenu = new wxMenuBar;
@@ -49,9 +49,11 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
 
 
     fileListView = new wxDataViewListCtrl(this, wxID_ANY);
+    fileListView->AppendBitmapColumn("", 1, wxDATAVIEW_CELL_INERT, 5, wxALIGN_CENTER);
     fileListView->AppendTextColumn("Test1Text");
     fileListView->AppendToggleColumn("Test2Toggle");
     wxVector<wxVariant> data;
+    data.push_back(wxVariant(wxNullBitmap));
     data.push_back( wxVariant("row 1") );
     data.push_back( wxVariant(true) );
     fileListView->AppendItem(data);
@@ -61,7 +63,7 @@ MainWindow::MainWindow() : wxFrame(nullptr, wxID_ANY, "File Tracer") {
 //    data.push_back( wxVariant("row 3") );
 //    listctrl->AppendItem( data );
 
-    this->SetInitialSize(wxSize(350, 400));
+    this->SetInitialSize(wxSize(600, 800));
 
     //--- Setup the Status Bar
     this->CreateStatusBar();
