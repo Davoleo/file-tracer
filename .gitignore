@@ -4,3 +4,6 @@
 
 # Local gradle cache
 .gradle
+
+# built files
+build
