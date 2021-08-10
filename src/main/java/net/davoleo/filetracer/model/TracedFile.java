@@ -1,9 +1,6 @@
 package net.davoleo.filetracer.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.io.File;
 
@@ -13,6 +10,7 @@ public class TracedFile {
     private final StringProperty path;
     private final IntegerProperty size;
     private final StringProperty extension;
+    private final ObjectProperty<FileCategories> category;
 
     public TracedFile(
             String path,
@@ -21,8 +19,10 @@ public class TracedFile {
             FileCategories category)
     {
         int slashIndex = path.lastIndexOf(File.separatorChar);
-        if (slashIndex != -1)
-            this.name = new SimpleStringProperty(path.substring(slashIndex));
+
+
+        if (slashIndex != -1 && slashIndex != path.length() - 1)
+            this.name = new SimpleStringProperty(path.substring(slashIndex) + 1);
         else
             this.name = new SimpleStringProperty(path);
 
@@ -34,10 +34,57 @@ public class TracedFile {
             this.extension = new SimpleStringProperty(path.substring(extIndex));
         else
             this.extension = new SimpleStringProperty("");
+
+        this.category = new SimpleObjectProperty<>(category);
     }
 
     public static TracedFile fromExistingFile(File file) {
         String filename = file.getName();
         return new TracedFile(file.getAbsolutePath(), 0, null);
+    }
+
+    public String getName()
+    {
+        return name.get();
+    }
+    public StringProperty nameProperty()
+    {
+        return name;
+    }
+
+    public String getPath()
+    {
+        return path.get();
+    }
+    public StringProperty pathProperty()
+    {
+        return path;
+    }
+
+    public int getSize()
+    {
+        return size.get();
+    }
+    public IntegerProperty sizeProperty()
+    {
+        return size;
+    }
+
+    public String getExtension()
+    {
+        return extension.get();
+    }
+    public StringProperty extensionProperty()
+    {
+        return extension;
+    }
+
+    public FileCategories getCategory()
+    {
+        return category.get();
+    }
+    public ObjectProperty<FileCategories> categoryProperty()
+    {
+        return category;
     }
 }

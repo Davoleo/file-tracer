@@ -1,6 +1,8 @@
 package net.davoleo.filetracer;
 
 import javafx.application.Application;
+import javafx.beans.value.ObservableListValue;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -71,10 +73,15 @@ public class FileTracer extends Application implements Initializable {
         samples.add(new TracedFile("bla\\bla\\bla\\test\\", 0, FileCategories.FOLDER));
 
         TableColumn<TracedFile, String> nameCol = new TableColumn<>("Name");
+        nameCol.setCellValueFactory(row -> row.getValue().nameProperty());
         TableColumn<TracedFile, String> pathCol = new TableColumn<>("Path");
+        pathCol.setCellValueFactory(row -> row.getValue().pathProperty());
         TableColumn<TracedFile, Integer> sizeCol = new TableColumn<>("Size");
+        sizeCol.setCellValueFactory(row -> row.getValue().sizeProperty().asObject());
         TableColumn<TracedFile, String> extCol = new TableColumn<>("Extension");
+        extCol.setCellValueFactory(row -> row.getValue().extensionProperty());
         TableColumn<TracedFile, FileCategories> catCol = new TableColumn<>("Category");
+        catCol.setCellValueFactory(row -> row.getValue().categoryProperty());
 
         filesTable.getColumns().setAll(nameCol, pathCol, sizeCol, extCol, catCol);
 
