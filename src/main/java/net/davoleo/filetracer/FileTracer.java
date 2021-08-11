@@ -1,8 +1,6 @@
 package net.davoleo.filetracer;
 
 import javafx.application.Application;
-import javafx.beans.value.ObservableListValue;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import net.davoleo.filetracer.model.FileCategories;
 import net.davoleo.filetracer.model.TracedFile;
@@ -29,10 +29,16 @@ public class FileTracer extends Application implements Initializable {
         launch(args);
     }
 
-    Stage primaryStage;
+    private FileTableManager fileManager = new FileTableManager(null);
+
+    private Stage primaryStage;
 
     @FXML
     private TableView<TracedFile> filesTable;
+    @FXML
+    private TextField searchBox;
+    @FXML
+    private Button searchButton;
 
     /**
      * Launches the app
@@ -87,5 +93,9 @@ public class FileTracer extends Application implements Initializable {
 
         ObservableList<TracedFile> obSamples = FXCollections.observableArrayList(samples);
         filesTable.setItems(obSamples);
+
+        //Add search Handler
+        searchBox.setOnAction(fileManager::handleSearchSubmission);
+        searchButton.setOnAction(fileManager::handleSearchSubmission);
     }
 }
