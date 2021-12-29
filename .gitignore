@@ -1,9 +1,9 @@
-# .idea directory
+# .idea directory and files
 /.idea
+*.iml
 
-# CMAKE Build Directory
-/cmake-build-debug
+# Local gradle cache
+.gradle
 
-# Compiled wxWidgets Binaries and headers
-/wxWidgets
-
+# built files
+build
