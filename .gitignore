@@ -1,5 +1,5 @@
 # .idea directory and files
-/.idea
+.idea
 *.iml
 
 # Local gradle cache
